@@ -37,6 +37,7 @@ def main():
 
     list_cmd = sub.add_parser("list")
     # --label will be added by learner
+    list_cmd.add_argument("--label", default="all", choices=["all", "work", "personal"])
 
     add_cmd = sub.add_parser("add")
     add_cmd.add_argument("note")
@@ -46,7 +47,7 @@ def main():
 
     if args.command == "list":
         # Learner will extend here
-        list_notes()
+        list_notes(args.label)
     elif args.command == "add":
         add_note(args.note, args.label)
     else:
